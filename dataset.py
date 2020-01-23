@@ -7,7 +7,7 @@ def view_samples(epoch, samples, nrows, ncols, figsize=(5,5)):
     for ax, img in zip(axes.flatten(), samples[epoch]):
         ax.axis('off')
         img = ((img - img.min())*255 / (img.max() - img.min())).astype(np.uint8)
-        ax.set_adjustable('box-forced')
+        ax.set_adjustable('box')
         im = ax.imshow(img, aspect='equal')
    
     plt.subplots_adjust(wspace=0, hspace=0)
