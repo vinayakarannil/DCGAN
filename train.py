@@ -54,6 +54,7 @@ plt.show()
 
 
 def train(net, dataset, epochs, batch_size, print_every=10, show_every=100, figsize=(5,5)):
+    print('Training started %f' %  process_time()  )
     saver = tf.train.Saver()
     sample_z = np.random.uniform(-1, 1, size=(real_size[0]*2, z_size))
 
@@ -62,6 +63,7 @@ def train(net, dataset, epochs, batch_size, print_every=10, show_every=100, figs
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
+        last = process_time()
         for e in range(epochs):
             for x in dataset.batches(batch_size):
                 steps += 1
@@ -86,10 +88,14 @@ def train(net, dataset, epochs, batch_size, print_every=10, show_every=100, figs
                     gen_samples = sess.run(generator(net.input_z, 3, reuse=True, training=False),
                                    feed_dict={net.input_z: sample_z})
                     samples.append(gen_samples)
-                    _ = view_samples(-1, samples, 6, 12, figsize=figsize,save=True,saveCount=len(samples))
-                    saver.save(sess, './checkpoints/generator.ckpt')
+                    _ = view_samples(-1, samples, 8, 8, figsize=figsize,save=True,saveCount=len(samples))
+            saver.save(sess, './checkpoints/generator {}.ckpt'.format(e+1))
+            last = process_time() - last
+            print('Epoch time is %f' % last)
+            last = process_time()
 
-    saver.save(sess, './checkpoints/generator.ckpt')
+        saver.save(sess, './checkpoints/generator.ckpt')
+        print('Model trained %f' %  process_time()  )
     return losses, samples
 
 
@@ -101,6 +107,6 @@ print('GAN created %f' %  process_time()  )
 dataset = Dataset(trainset, testset)
 print('Dataset created %f' %  process_time()  )
 
-losses, samples = train(net, dataset, epochs, batch_size,print_every,show_every,figsize=(10,5))
+losses, samples = train(net, dataset, epochs, batch_size,print_every,show_every,figsize=(5,5))
 
 _ = view_samples(0, samples, 4, 4, figsize=(10,5))

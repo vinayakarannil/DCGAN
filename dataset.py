@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+from constants import samples_dir 
 
 def view_samples(epoch, samples, nrows, ncols, figsize=(5,5),save=False,saveCount=0):
     fig, axes = plt.subplots(figsize=figsize, nrows=nrows, ncols=ncols,

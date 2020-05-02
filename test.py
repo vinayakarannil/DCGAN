@@ -33,6 +33,4 @@ with tf.Session() as sess:
     sample_z = np.random.uniform(-1, 1, size=(int(real_size[0]/2), z_size))
     gen_samples = sess.run(generator(net.input_z, 3, reuse=True, training=False),
                                    feed_dict={net.input_z: sample_z})
-
-
     _ = view_samples(0, [gen_samples],4, 4, figsize=(5,5))
