@@ -1,0 +1,11 @@
+data_dir = 'data/'
+samples_dir = 'samples/'
+real_size = (32,32,3)
+z_size = 100
+learning_rate = 0.0002
+batch_size = 128
+epochs = 10
+alpha = 0.2
+beta1 = 0.5
+print_every = 3
+show_every = 5
