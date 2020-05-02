@@ -3,3 +3,6 @@
 *.png
 *.gif
 *.pyc
+*.txt
+checkpoints
+data
