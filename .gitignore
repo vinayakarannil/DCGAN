@@ -1,0 +1,9 @@
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.pyc
+*.txt
+checkpoints
+data
+samples

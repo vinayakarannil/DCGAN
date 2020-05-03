@@ -1,0 +1,12 @@
+data_dir = 'data/'
+samples_dir = 'samples/'
+real_size = (64,64,3)
+squ = real_size[0] * real_size[1]
+z_size = 100
+learning_rate = 0.0002
+batch_size = 128
+epochs = 1000
+alpha = 0.2
+beta1 = 0.5
+print_every = 1
+show_every = 10
