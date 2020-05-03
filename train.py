@@ -37,20 +37,22 @@ for image in os.listdir(data_dir) :
 print('Images imported %f' %  process_time()  )
 
 images=np.array(imagesRaw)
+imagesRaw = []
+
 trainset = images[:3000]
 testset = images[3000:]
 
 print('Numpy array created %f' %  process_time()  )
 
-idx = np.random.randint(0, len(trainset), size=36)
-fig, axes = plt.subplots(6, 6, sharex=True, sharey=True, figsize=(5,5),)
-for ii, ax in zip(idx, axes.flatten()):
-    ax.imshow(trainset[ii], aspect='equal')
-    ax.xaxis.set_visible(False)
-    ax.yaxis.set_visible(False)
+#idx = np.random.randint(0, len(trainset), size=36)
+#fig, axes = plt.subplots(6, 6, sharex=True, sharey=True, #figsize=(5,5),)
+#for ii, ax in zip(idx, axes.flatten()):
+#    ax.imshow(trainset[ii], aspect='equal')
+#    ax.xaxis.set_visible(False)
+#    ax.yaxis.set_visible(False)
 
-plt.subplots_adjust(wspace=0, hspace=0)
-plt.show()
+#plt.subplots_adjust(wspace=0, hspace=0)
+#plt.show()
 
 
 def train(net, dataset, epochs, batch_size, print_every=10, show_every=100, figsize=(5,5)):
