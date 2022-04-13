@@ -9,6 +9,8 @@ import os
 import cv2
 
 from model import GAN
+from model import generator
+from dataset import view_samples
  
 
 data_dir = 'data/'
